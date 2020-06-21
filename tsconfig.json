@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+       
+        "jsx": "react",
+        "module": "commonjs",
+        "outDir": "./build/",
+        "preserveConstEnums": true,
+        "removeComments": true,
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "target": "es5",
+        "lib": [
+            "es5",
+            "es6",
+            "dom"
+        ],
+    },
+    "include": [
+        "src/components/index.tsx"
+    ]
+}
