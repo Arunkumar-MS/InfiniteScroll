@@ -5,8 +5,12 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack",
+    "preinstall": "yarn global add pm2",
     "watch": "webpack --watch --info-verbosity verbose",
     "build:dev": "webpack-dev-server --open"
+  },
+  "engines": {
+    "node": "12.14.1"
   },
   "devDependencies": {
     "@types/react": "^16.9.35",

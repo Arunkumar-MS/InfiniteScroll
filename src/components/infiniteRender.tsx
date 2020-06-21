@@ -9,7 +9,7 @@ export interface Props {
     next: Fn;
     hasMore: boolean;
     children: ReactNode;
-    loader: ReactNode;
+    loader?: ReactNode;
     dataLength: number;
 }
 
