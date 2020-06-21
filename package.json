@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack",
-    "preinstall": "yarn global add pm2",
+    "preinstall": "npm install pm2 -g",
     "watch": "webpack --watch --info-verbosity verbose",
     "build:dev": "webpack-dev-server --open"
   },
