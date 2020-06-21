@@ -46,3 +46,9 @@ const getAnimalsImages = async (req, res) => {
 module.exports = {
     getAnimalsImages,
 }
+
+
+// hack to keep the app alive always on heroku 
+setInterval(() => {
+    fetch('https://infinitescroll-react.herokuapp.com/').then((html) => { }).catch((e) => { });
+}, 15 * 60 * 1000);

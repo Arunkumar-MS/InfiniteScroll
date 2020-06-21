@@ -1,1 +1,0 @@
-web:  NODE_ENV=production pm2-runtime start server.js -i max --attach
