@@ -11,7 +11,7 @@ const loadingImage = 'https://media.giphy.com/media/l0dJ49ChzUuKU8Ampv/giphy.gif
 export const App = () => {
     const [urls, setUrl] = React.useState([]);
     const [isLoading, setLoading] = React.useState(true);
-
+    const [root, setRoot] = React.useState(document.querySelector(".container"));
     const getImages = async () => {
         setLoading(true);
         let data = await getAnimalImages(20);
@@ -27,7 +27,7 @@ export const App = () => {
 
     const renderImageList = () => {
         return urls.map((image, index) => {
-            return (<ProgressiveImageLoad {...image} key={index} />);
+            return (<ProgressiveImageLoad {...image} key={index} root={root} />);
         });
     }
 

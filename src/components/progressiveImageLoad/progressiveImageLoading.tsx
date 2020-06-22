@@ -1,20 +1,40 @@
 import * as React from 'react';
-import { useProgressiveImage } from '../../customHooks/useProgressiveImage';
-
+const placeHoledrImage = 'https://media.giphy.com/media/l0dJ49ChzUuKU8Ampv/giphy.gif';
 interface Props {
     url: string;
     id: string;
     className?: string;
-    style?: any;
+    root: any;
 }
 
 export const ProgressiveImageLoad: React.FC<Props> = React.memo((props) => {
-    const data = useProgressiveImage(props);
-    return (<div className="img-hover-zoom"> <img src={data.url} className={data.className} /> </div>);
+    let observer = null;
+    let element = null;
+    React.useEffect(() => {
+        observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    const { isIntersecting } = entry;
+
+                    if (isIntersecting) {
+                        element.src = props.url;
+                        observer = observer.disconnect();
+                    }
+                });
+            },
+            {
+                root: props.root,
+                rootMargin: "0px 0px 200px 0px"
+            }
+        );
+        observer.observe(element);
+        return () => observer = observer.disconnect();
+
+    }, []);
+
+    return (
+        <div className="img-hover-zoom">
+            <img ref={el => element = el} className={props.className} src={placeHoledrImage} />
+        </div>
+    );
 });
-
-
-
-
-
-
