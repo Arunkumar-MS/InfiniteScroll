@@ -15,11 +15,14 @@ export const ProgressiveImageLoad: React.FC<Props> = React.memo((props) => {
             entries => {
                 entries.forEach(entry => {
                     const { isIntersecting } = entry;
-
                     if (isIntersecting) {
                         element.src = props.url;
-                        observer = observer.disconnect();
+                    } else {
+                        if(element){
+                            element.src = placeHoledrImage;
+                        }
                     }
+
                 });
             },
             {
@@ -29,7 +32,6 @@ export const ProgressiveImageLoad: React.FC<Props> = React.memo((props) => {
         );
         observer.observe(element);
         return () => observer = observer.disconnect();
-
     }, []);
 
     return (
