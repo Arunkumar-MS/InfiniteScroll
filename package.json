@@ -9,7 +9,7 @@
     "preinstall": "yarn global add pm2",
     "watch": "webpack --watch --info-verbosity verbose",
     "build:dev": "webpack-dev-server --open",
-    "dev":"yarn webpack && node server.js"
+    "dev": "yarn webpack && node server.js"
   },
   "engines": {
     "node": "12.14.1"
@@ -31,6 +31,7 @@
     "compression": "^1.7.4",
     "compression-webpack-plugin": "^4.0.0",
     "express": "^4.17.1",
+    "intersection-observer": "^0.10.0",
     "lodash-es": "^4.17.15",
     "node-fetch": "^2.6.0",
     "pm2": "^4.4.0",
