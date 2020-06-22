@@ -10,7 +10,7 @@ interface Props {
 
 export const ProgressiveImageLoad: React.FC<Props> = React.memo((props) => {
     const data = useProgressiveImage(props);
-    return (<img src={data.url} className={data.className} />);
+    return (<div className="img-hover-zoom"> <img src={data.url} className={data.className} /> </div>);
 });
 
 

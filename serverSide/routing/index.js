@@ -13,11 +13,12 @@ const mapAandValidateData = (response = []) => {
             console.log(item);
             const imageUrl = url || file || image;
             if (hasValidImage(imageUrl) && !mapSet[imageUrl]) {
-                mapSet[imageUrl] = true; // for removing duplicates from current list;
-                result.push({ url: imageUrl, id: fromString(imageUrl), fileSizeBytes });
+                mapSet[imageUrl] = true; // removing duplicates from current list
+                const id = fromString(imageUrl); // get an id for an image 
+                result.push({ url: imageUrl, id, fileSizeBytes });
             }
         }
-        return sortBaseOnFileSize(result);
+        return sortBaseOnFileSize(result); // this will push down the big images below so that user can see light weight image faster
     }, []);
 }
 
@@ -45,3 +46,9 @@ const getAnimalsImages = async (req, res) => {
 module.exports = {
     getAnimalsImages,
 }
+
+
+// hack to keep the app alive always on heroku 
+setInterval(() => {
+    fetch('https://infinitescroll-react.herokuapp.com/').then((html) => { }).catch((e) => { });
+}, 15 * 60 * 1000);

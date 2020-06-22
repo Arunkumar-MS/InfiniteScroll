@@ -3,6 +3,7 @@ import { getAnimalImages } from '../service';
 import { removeDuplicate } from '../helpers/removeDuplicates';
 import { InfinitRender } from './infiniteRender';
 import { ProgressiveImageLoad } from './progressiveImageLoad';
+import './appStyle.scss';
 
 const backedReoveDubp = removeDuplicate();
 const loadingImage = 'https://media.giphy.com/media/l0dJ49ChzUuKU8Ampv/giphy.gif';
@@ -37,11 +38,13 @@ export const App = () => {
                     dataLength={urls.length}
                     next={getImages}
                     hasMore={true}
-                    loader={<img src={loadingImage} className='loader' />}
                 >
-                   {!!urls.length && renderImageList()}
+                    {!!urls.length && renderImageList()}
                 </InfinitRender>
             </div>
+            {isLoading && (<div className="LoadingInfo">
+                <div className="lds-dual-ring"></div>
+            </div>)}
         </>
     );
 };

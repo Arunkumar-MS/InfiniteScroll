@@ -1,12 +1,17 @@
 {
   "name": "infinitescroll",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "entry.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack",
+    "start": "pm2-runtime start ecosystem.config.js --env production",
+    "start:prod": "webpack",
+    "preinstall": "yarn global add pm2",
     "watch": "webpack --watch --info-verbosity verbose",
     "build:dev": "webpack-dev-server --open"
+  },
+  "engines": {
+    "node": "12.14.1"
   },
   "devDependencies": {
     "@types/react": "^16.9.35",
@@ -24,8 +29,10 @@
   "dependencies": {
     "compression": "^1.7.4",
     "compression-webpack-plugin": "^4.0.0",
+    "express": "^4.17.1",
     "lodash-es": "^4.17.15",
     "node-fetch": "^2.6.0",
+    "pm2": "^4.4.0",
     "promise.allsettled": "^1.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

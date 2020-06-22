@@ -1,12 +1,3 @@
-$breakpoint-tablet: 768px;
-$breakpoint-deskop: 1024px;
-$breakpoint-mobile: 500px;
-$breakpoint-deskop-large: 1280px;
-
-body {
-    background: aliceblue;
-}
-
 .ImageContiner {
     display: flex;
     justify-content: center;
@@ -19,40 +10,20 @@ img {
     border-radius: 10px;
 }
 
-.InfinitRender__continer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+body {
+    background: aliceblue;
 }
 
-@media (max-width: $breakpoint-tablet) {
-    .InfinitRender {
-        margin: 5px;
-    }
-
-    .InfinitRender__continer {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 5px;
-    }
-
-    img {
-        height: 250px;
-        width: 230px;
-        margin: 5px;
-        border-radius: 5px;
-    }
-}
+@media only screen and (max-width: 600px) {
 
 
-@media (max-width: $breakpoint-mobile) {
     .InfinitRender {
         width: 100%;
         margin: 5px;
     }
 
     img {
-        height: 250px;
+        height: 350px;
         width: 100%;
         margin: 5px;
         border-radius: 10px;
@@ -66,10 +37,40 @@ img {
 
 }
 
+@media only screen and (min-width: 600px) {
 
-@media (min-width: $breakpoint-tablet) {
     .InfinitRender {
-        max-width: 768px;
+        width: 100%;
+        margin: 5px;
+    }
+
+    img {
+        height: 350px;
+        width: 100%;
+        margin: 5px;
+        border-radius: 10px;
+    }
+
+    .InfinitRender__continer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5px;
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+
+    .InfinitRender {
+        width: 100%;
+        margin: 5px;
+    }
+
+    img {
+        height: 350px;
+        width: 100%;
+        margin: 5px;
+        border-radius: 10px;
     }
 
     .InfinitRender__continer {
@@ -78,27 +79,21 @@ img {
         grid-gap: 5px;
     }
 
+}
+
+
+@media only screen and (min-width: 1200px) {
+
+    .InfinitRender {
+        width: 100%;
+        margin: 5px;
+    }
+
     img {
-        height: 250px;
-        width: 250px;
-        margin: 2px;
+        height: 350px;
+        width: 100%;
+        margin: 5px;
         border-radius: 10px;
-    }
-}
-
-@media (min-width: $breakpoint-deskop) {
-    .InfinitRender {
-        max-width: 1000px;
-    }
-
-    img {
-        width: 300px;
-    }
-}
-
-@media (min-width: $breakpoint-deskop-large) {
-    .InfinitRender {
-        max-width: 1280px;
     }
 
     .InfinitRender__continer {
@@ -107,12 +102,6 @@ img {
         grid-gap: 5px;
     }
 
-    img {
-        height: 300px;
-        width: 310px;
-        margin: 2px;
-        border-radius: 10px;
-    }
 }
 
 .loader {
@@ -120,3 +109,15 @@ img {
     margin: auto;
 }
 
+.img-hover-zoom {
+    height: 360px;
+    overflow: hidden;
+}
+
+.img-hover-zoom img {
+    transition: transform .9s ease;
+}
+
+.img-hover-zoom:hover img {
+    transform: scale(1.1);
+}
