@@ -13,6 +13,7 @@ interface State {
 
 export class InfinitRender extends React.PureComponent<{}, State> {
   root: Document = null;
+  initalRender: boolean = true;
   public constructor(props) {
     super(props);
     this.state = {
@@ -20,12 +21,11 @@ export class InfinitRender extends React.PureComponent<{}, State> {
       images: [],
     };
     this.root = document;
+    this.initalRender = true;
   }
+
   private onScrollListener = async () => {
-    if (
-      window.innerHeight + window.scrollY >= document.body.offsetHeight &&
-      !this.state.showLoader
-    ) {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 300 && !this.state.showLoader) {
       this.setState({ showLoader: true });
       let data = await getAnimalImages(20);
       data = this.state.images.concat(removeDuplicates(data));
@@ -40,6 +40,7 @@ export class InfinitRender extends React.PureComponent<{}, State> {
     getAnimalImages(20).then((data) => {
       removeDuplicates(data);
       this.setState((prevState) => ({ showLoader: false, images: data }));
+      this.initalRender = false;
     });
   }
 
@@ -67,7 +68,7 @@ export class InfinitRender extends React.PureComponent<{}, State> {
             </div>
           </div>
         </div>
-        {!this.state.showLoader && (
+        { (this.initalRender || this.state.showLoader) && (
           <div className="LoadingInfo">
             <div className="lds-dual-ring"></div>
           </div>
