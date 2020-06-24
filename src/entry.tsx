@@ -1,9 +1,9 @@
 import "intersection-observer";
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { h, render } from 'preact';
+
 import { App } from "./components/app";
 
-ReactDOM.render(
+render(
     <App />,
     (document as any).getElementById("output")
 );

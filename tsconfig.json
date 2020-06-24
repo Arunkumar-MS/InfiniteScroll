@@ -2,6 +2,7 @@
     "compilerOptions": {
        
         "jsx": "react",
+        "jsxFactory": "h",
         "module": "commonjs",
         "outDir": "./build/",
         "preserveConstEnums": true,
