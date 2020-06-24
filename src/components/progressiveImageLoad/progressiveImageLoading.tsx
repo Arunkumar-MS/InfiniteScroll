@@ -1,4 +1,5 @@
-import * as React from "react";
+import { h } from "preact";
+import { memo, useEffect } from "preact/compat";
 const placeHoledrImage =
   "https://media.giphy.com/media/l0dJ49ChzUuKU8Ampv/giphy.gif";
 interface Props {
@@ -8,10 +9,10 @@ interface Props {
   root: any;
 }
 
-export const ProgressiveImageLoad: React.FC<Props> = React.memo((props) => {
+export const ProgressiveImageLoad = memo((props: Props) => {
   let observer = null;
   let element = null;
-  React.useEffect(() => {
+  useEffect(() => {
     observer = new IntersectionObserver(
       (entries) => {
         entries &&

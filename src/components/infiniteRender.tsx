@@ -1,4 +1,5 @@
-import React, { CSSProperties } from "react";
+import { h } from 'preact';
+import { PureComponent } from 'preact/compat';
 import "./infinitRenderStyle.scss";
 import { throttle } from "throttle-debounce";
 import { getAnimalImages } from "../service";
@@ -11,7 +12,7 @@ interface State {
   images: any[];
 }
 
-export class InfinitRender extends React.PureComponent<{}, State> {
+export class InfinitRender extends PureComponent<{}, State> {
   root: Document = null;
   initalRender: boolean = true;
   public constructor(props) {
@@ -23,7 +24,6 @@ export class InfinitRender extends React.PureComponent<{}, State> {
     this.root = document;
     this.initalRender = true;
   }
-
   private onScrollListener = async () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 300 && !this.state.showLoader) {
       this.setState({ showLoader: true });
@@ -57,10 +57,10 @@ export class InfinitRender extends React.PureComponent<{}, State> {
     const style = {
       height: "auto",
       overflow: "hidden",
-    } as CSSProperties;
+    } as any;
 
     return (
-      <>
+      <div>
         <div className="ImageContiner">
           <div className="InfinitRender">
             <div className={`InfinitRender__continer`} style={style}>
@@ -68,12 +68,12 @@ export class InfinitRender extends React.PureComponent<{}, State> {
             </div>
           </div>
         </div>
-        { (this.initalRender || this.state.showLoader) && (
+        {(this.initalRender || this.state.showLoader) && (
           <div className="LoadingInfo">
             <div className="lds-dual-ring"></div>
           </div>
         )}
-      </>
+      </div>
     );
   }
 }
