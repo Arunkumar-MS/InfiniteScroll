@@ -26,22 +26,23 @@ export class InfinitRender extends React.PureComponent<{}, State> {
 
   private onScrollListener = async () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 300 && !this.state.showLoader) {
-      this.setState({ showLoader: true });
-      let data = await getAnimalImages(20);
-      data = this.state.images.concat(removeDuplicates(data));
-      this.setState({ showLoader: false, images: data });
+      this.updateImages()
     }
   };
+
+  private updateImages = async () => {
+    this.setState({ showLoader: true });
+    let data = await getAnimalImages(20);
+    data = this.state.images.concat(removeDuplicates(data));
+    this.initalRender = false;
+    this.setState({ showLoader: false, images: data });
+  }
 
   private onScroll = throttle(200, this.onScrollListener);
 
   public componentDidMount() {
     window.addEventListener("scroll", this.onScroll);
-    getAnimalImages(20).then((data) => {
-      removeDuplicates(data);
-      this.setState((prevState) => ({ showLoader: false, images: data }));
-      this.initalRender = false;
-    });
+    this.updateImages();
   }
 
   public componentWillUnmount() {
@@ -54,6 +55,9 @@ export class InfinitRender extends React.PureComponent<{}, State> {
     });
   };
   public render() {
+    if (!this.initalRender && this.state.images.length < 15) {
+      this.updateImages();
+    }
     const style = {
       height: "auto",
       overflow: "hidden",
@@ -68,7 +72,7 @@ export class InfinitRender extends React.PureComponent<{}, State> {
             </div>
           </div>
         </div>
-        { (this.initalRender || this.state.showLoader) && (
+        {(this.initalRender || this.state.showLoader) && (
           <div className="LoadingInfo">
             <div className="lds-dual-ring"></div>
           </div>

@@ -7,12 +7,12 @@ const { sortBaseOnFileSize } = require('../utils/sortResult');
 
 const mapAandValidateData = (response = []) => {
     const mapSet = {};
-    return response.reduce((result, item) => {
+    return response.reduce((result, item = {}) => {
         if (item.status === 'fulfilled') {
-            const { url = '', file = '', image = '', fileSizeBytes= 0 } = item.value;
+            const { url = '', file = '', image = '', fileSizeBytes= 0 } = item.value || {};
             console.log(item);
             const imageUrl = url || file || image;
-            if (hasValidImage(imageUrl) && !mapSet[imageUrl]) {
+            if (imageUrl && hasValidImage(imageUrl) && !mapSet[imageUrl]) {
                 mapSet[imageUrl] = true; // removing duplicates from current list
                 const id = fromString(imageUrl); // get an id for an image 
                 result.push({ url: imageUrl, id, fileSizeBytes });
@@ -32,6 +32,7 @@ const createPromiseList = (length = 20) => {
 }
 
 const getAnimalsImages = async (req, res) => {
+    console.log("ROute")
     const promiseList = createPromiseList(req.query.count);
     try {
         const response = await Promise.allSettled(promiseList);
