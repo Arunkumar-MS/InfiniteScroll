@@ -55,7 +55,7 @@ export class InfinitRender extends React.PureComponent<{}, State> {
     });
   };
   public render() {
-    if (!this.initalRender && this.state.images.length < 15) {
+    if (!this.initalRender && this.state.images.length < 25) {
       this.updateImages();
     }
     const style = {
