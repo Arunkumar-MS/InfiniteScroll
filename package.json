@@ -40,7 +40,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "sass": "^1.26.8",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^10.0.1",
     "style-loader": "^1.2.1",
     "throttle-debounce": "^2.2.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
