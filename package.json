@@ -4,12 +4,12 @@
   "main": "entry.js",
   "license": "MIT",
   "scripts": {
-    "start": "yarn install && pm2-runtime start ecosystem.config.js --env production",
+    "start": "npm install && pm2-runtime start ecosystem.config.js --env production",
     "start:prod": "webpack",
-    "preinstall": "yarn global add pm2",
+    "preinstall": "npm i pm2 -g",
     "watch": "webpack --watch --info-verbosity verbose",
     "build:dev": "webpack-dev-server --open",
-    "dev": "yarn webpack && node server.js"
+    "dev": "webpack && node server.js"
   },
   "engines": {
     "node": "12.14.1"
