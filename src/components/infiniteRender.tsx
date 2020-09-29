@@ -2,82 +2,50 @@ import React, { CSSProperties } from "react";
 import "./infinitRenderStyle.scss";
 import { throttle } from "throttle-debounce";
 import { getAnimalImages } from "../service";
-import { ProgressiveImageLoad } from "./progressiveImageLoad";
 import { removeDuplicate } from "../helpers/removeDuplicates";
+import { PageList } from "./Page/PageList";
 const removeDuplicates = removeDuplicate();
 
-interface State {
-  showLoader: boolean;
-  images: any[];
-}
 
-export class InfinitRender extends React.PureComponent<{}, State> {
-  root: Document = null;
-  initalRender: boolean = true;
-  public constructor(props) {
-    super(props);
-    this.state = {
-      showLoader: true,
-      images: [],
-    };
-    this.root = document;
-    this.initalRender = true;
-  }
+export const InfinitRender = () => {
+  const [showLoader, setShowLoader] = React.useState(false);
+  const [images, setImages] = React.useState([]);
 
-  private onScrollListener = async () => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 300 && !this.state.showLoader) {
-      this.updateImages()
+  const onScrollListener = (e: any) => {
+    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrolled = (winScroll / height) * 100;
+    if (scrolled > 70 && !showLoader) {
+      setShowLoader((loader) => {
+        !loader && getAnimalImages(20).then((data) => {
+          data = removeDuplicates(data);
+          setImages((img) => img.concat(data));
+          setShowLoader(false);
+        });
+        return true;
+      });
     }
   };
 
-  private updateImages = async () => {
-    this.setState({ showLoader: true });
-    let data = await getAnimalImages(20);
-    data = this.state.images.concat(removeDuplicates(data));
-    this.initalRender = false;
-    this.setState({ showLoader: false, images: data });
-  }
+  const onScroll = throttle(200, false, onScrollListener, true);
 
-  private onScroll = throttle(200, this.onScrollListener);
-
-  public componentDidMount() {
-    window.addEventListener("scroll", this.onScroll);
-    this.updateImages();
-  }
-
-  public componentWillUnmount() {
-    window.removeEventListener("scroll", this.onScroll);
-  }
-
-  private renderImageList = () => {
-    return this.state.images.map((image, index) => {
-      return <ProgressiveImageLoad {...image} key={index} root={this.root} />;
+  React.useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+    getAnimalImages(30).then((data) => {
+      removeDuplicates(data);
+      setImages(data);
     });
-  };
-  public render() {
-    if (!this.initalRender && this.state.images.length < 25) {
-      this.updateImages();
-    }
-    const style = {
-      height: "auto",
-      overflow: "hidden",
-    } as CSSProperties;
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-    return (
-      <>
-        <div className="ImageContiner">
-          <div className="InfinitRender">
-            <div className={`InfinitRender__continer`} style={style}>
-              {!!this.state.images.length && this.renderImageList()}
-            </div>
-          </div>
+  return (
+    <>
+      {!!images.length && <PageList images={images} />}
+      {(!images.length || showLoader) && (
+        <div className="LoadingInfo">
+          <div className="lds-dual-ring"></div>
         </div>
-        {(this.initalRender || this.state.showLoader) && (
-          <div className="LoadingInfo">
-            <div className="lds-dual-ring"></div>
-          </div>
-        )}
-      </>
-    );
-  }
+      )}
+    </>
+  );
 }

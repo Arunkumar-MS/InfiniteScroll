@@ -11,7 +11,7 @@
         margin: 8px;
         border-radius: 50%;
         border: 6px solid #fff;
-        border-color:#000 transparent #000;
+        border-color: #000 transparent #000;
         animation: lds-dual-ring 1.2s linear infinite;
     }
 }
@@ -25,8 +25,62 @@
         transform: rotate(360deg);
     }
 }
+
 .LoadingInfo {
     display: flex;
     justify-content: center;
     margin: 30px;
+}
+
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li {
+    height: 40vh;
+    flex-grow: 1;
+}
+
+li:last-child {
+    flex-grow: 10;
+}
+
+img {
+    max-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+}
+
+@media (max-aspect-ratio: 1/1) {
+    li {
+        height: 30vh;
+    }
+}
+
+
+@media (max-height: 480px) {
+    li {
+        height: 80vh;
+    }
+}
+
+
+@media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+    ul {
+        flex-direction: row;
+    }
+
+    li {
+        height: auto;
+        width: 100%;
+    }
+
+    img {
+        width: 100%;
+        max-height: 75vh;
+        min-width: 0;
+    }
 }
