@@ -1,123 +1,48 @@
-.ImageContiner {
-    display: flex;
-    justify-content: center;
-}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
 
-img {
-    height: 250px;
-    width: 350px;
-    margin: 5px;
-    border-radius: 10px;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
-
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
 body {
-    background: aliceblue;
+	line-height: 1;
 }
-
-@media only screen and (max-width: 600px) {
-
-
-    .InfinitRender {
-        width: 100%;
-        margin: 5px;
-    }
-
-    img {
-        height: 350px;
-        width: 100%;
-        margin: 5px;
-        border-radius: 10px;
-    }
-
-    .InfinitRender__continer {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 5px;
-    }
-
+ol, ul {
+	list-style: none;
 }
-
-@media only screen and (min-width: 600px) {
-
-    .InfinitRender {
-        width: 100%;
-        margin: 5px;
-    }
-
-    img {
-        height: 350px;
-        width: 100%;
-        margin: 5px;
-        border-radius: 10px;
-    }
-
-    .InfinitRender__continer {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 5px;
-    }
-
+blockquote, q {
+	quotes: none;
 }
-
-@media only screen and (min-width: 768px) {
-
-    .InfinitRender {
-        width: 100%;
-        margin: 5px;
-    }
-
-    img {
-        height: 350px;
-        width: 100%;
-        margin: 5px;
-        border-radius: 10px;
-    }
-
-    .InfinitRender__continer {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 5px;
-    }
-
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
 }
-
-
-@media only screen and (min-width: 1200px) {
-
-    .InfinitRender {
-        width: 100%;
-        margin: 5px;
-    }
-
-    img {
-        height: 350px;
-        width: 100%;
-        margin: 5px;
-        border-radius: 10px;
-    }
-
-    .InfinitRender__continer {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 5px;
-    }
-
-}
-
-.loader {
-    display: flex;
-    margin: auto;
-}
-
-.img-hover-zoom {
-    height: 360px;
-    overflow: hidden;
-}
-
-.img-hover-zoom img {
-    transition: transform .9s ease;
-}
-
-.img-hover-zoom:hover img {
-    transform: scale(1.1);
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }

@@ -9,7 +9,7 @@ const mapAandValidateData = (response = []) => {
     const mapSet = {};
     return response.reduce((result, item) => {
         if (item.status === 'fulfilled') {
-            const { url = '', file = '', image = '', fileSizeBytes= 0 } = item.value;
+            const { url = '', file = '', image = '', fileSizeBytes= 0 } = item && item.value || {};
             console.log(item);
             const imageUrl = url || file || image;
             if (hasValidImage(imageUrl) && !mapSet[imageUrl]) {

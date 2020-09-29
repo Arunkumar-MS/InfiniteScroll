@@ -52,6 +52,5 @@ module.exports = {
       template: path.resolve(__dirname, "index.html"),
     }),
     new MiniCssExtractPlugin(),
-    new CleanWebpackPlugin(),
   ],
 };
