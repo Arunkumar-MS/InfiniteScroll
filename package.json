@@ -43,7 +43,7 @@
     "sass": "^1.26.8",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
-    "throttle-debounce": "^2.2.1",
+    "throttle-debounce": "^3.0.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "uuidv4": "^6.1.0"
   }

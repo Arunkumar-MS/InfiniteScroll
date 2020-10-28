@@ -4345,6 +4345,11 @@ react-dom@^16.13.1:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
+react-intersection-observer@^8.29.0:
+  version "8.29.1"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.29.1.tgz#8c6f494ca81b39aee9f509f12d29443fc66a2256"
+  integrity sha512-JLxJ4V0L73ailfvbYQ2/lfAyirtud1WsRsYnzHyVLMfQff1AIG1lWdC5XaGSK4yb9jZHVbbNsrVIO3PJm03koQ==
+
 react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -5169,10 +5174,10 @@ terser@^4.1.2, terser@^4.6.3:
     source-map "~0.6.1"
     source-map-support "~0.5.12"
 
-throttle-debounce@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-2.2.1.tgz#fbd933ae6793448816f7d5b3cae259d464c98137"
-  integrity sha512-i9hAVld1f+woAiyNGqWelpDD5W1tpMroL3NofTz9xzwq6acWBlO2dC8k5EFSZepU6oOINtV5Q3aSPoRg7o4+fA==
+throttle-debounce@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-3.0.0.tgz#8d7fd809e123599b17c8d3cf0ee4c4106ab099f8"
+  integrity sha512-2B0b5wmu8Hpmtsh9Q+1Lk7Eq0dd1u1XQAifrZr0EMshB80MthC1K7BK3FHG27VQ7g1GuW7fFThiobIjCTCIBTw==
 
 through2@^2.0.0:
   version "2.0.5"
