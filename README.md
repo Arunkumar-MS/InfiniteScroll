@@ -1,6 +1,4 @@
 
-[![RelativeCI](https://badges.relative-ci.com/badges/Sue3AZmH5EhnJ9zg1ovL?branch=master)](https://app.relative-ci.com/projects/Sue3AZmH5EhnJ9zg1ovL)
-
 ## For Live demo please visit 
 https://infinitescroll-react.herokuapp.com/
 ## Steps to run locally 
