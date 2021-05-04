@@ -15,7 +15,7 @@
     "node": "12.14.1"
   },
   "devDependencies": {
-    "@types/react": "^16.9.35",
+    "@types/react": "^17.0.5",
     "@types/react-dom": "^16.9.8",
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^3.5.3",
