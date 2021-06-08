@@ -45,6 +45,6 @@
     "style-loader": "^1.2.1",
     "throttle-debounce": "^2.2.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "uuidv4": "^6.1.0"
+    "uuidv4": "^6.2.10"
   }
 }
